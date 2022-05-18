@@ -1,7 +1,19 @@
-"""
-# Welcome to Streamlit!
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
-In the meantime, below is an example of what you can do with just a few lines of code:
-"""
+import yfinance as yf
+import streamlit as st
+
+st.write("""
+# Simple Stock Price App
+Shown are the stock closing price and volume of Google!
+""")
+
+# https://towardsdatascience.com/how-to-get-stock-data-using-python-c0de1df17e75
+#define the ticker symbol
+tickerSymbol = 'GOOGL'
+#get data on this ticker
+tickerData = yf.Ticker(tickerSymbol)
+#get the historical prices for this ticker
+tickerDf = tickerData.history(period='1d', start='2010-5-31', end='2020-5-31')
+# Open	High	Low	Close	Volume	Dividends	Stock Splits
+
+st.line_chart(tickerDf.Close)
+st.line_chart(tickerDf.Volume)
