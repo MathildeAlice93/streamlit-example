@@ -1,4 +1,5 @@
-import utils
+#import utils
+import https://raw.githubusercontent.com/MathildeAlice93/streamlit-example/master/utils.py
 import csv
 import re
 import streamlit as st
